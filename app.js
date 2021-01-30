@@ -85,6 +85,6 @@ app.delete('/quotes/:id', async (req, res) => {
     } catch(err) {
         res.status(500).json({message: err.message});
     }
-})
+});
 
 app.listen(3000, () => console.log('Quote API listening on port 3000!'));
