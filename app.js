@@ -73,4 +73,18 @@ app.put('/quotes/:id', async (req, res) => {
 })
 // Send a DELETE request to /quotes/:id to remove a quote
 
+app.delete('/quotes/:id', async (req, res) => {
+    try {
+        if(quote) {
+        const quote = await records.getQuote(req.params.id);
+        await records.deleteQuote(quote);
+        res.status(204).end();
+        } else {
+            res.status(404).json({message: "Quote not found!"});
+        }
+    } catch(err) {
+        res.status(500).json({message: err.message});
+    }
+})
+
 app.listen(3000, () => console.log('Quote API listening on port 3000!'));
