@@ -54,6 +54,7 @@ app.post('/quotes', async (req, res) => {
         res.status(500).json({message: err.message});
     };
 });
+
 // Send a PUT request to /quotes/:id to UPDATE(edit) a quote
 
 app.put('/quotes/:id', async (req, res) => {
@@ -70,7 +71,8 @@ app.put('/quotes/:id', async (req, res) => {
     } catch(err) {
         res.status(500).json({message: err.message});
     }
-})
+});
+
 // Send a DELETE request to /quotes/:id to remove a quote
 
 app.delete('/quotes/:id', async (req, res) => {
