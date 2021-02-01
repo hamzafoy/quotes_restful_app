@@ -41,12 +41,12 @@ router.get('/quotes', async (req, res) => {
 
 // Send a GET request to /quotes/quote/random to READ(view) a random quote
 
-router.get('/quotes/quote/random', async (req, res) => {
+router.get('/quotes/quote/random', async (req, res, next) => {
     try {
         const randomQuote = await records.getRandomQuote();
         res.json(randomQuote);
     } catch(err) {
-        res.json({message: err.message});
+        next(err);
     }
 })
 
